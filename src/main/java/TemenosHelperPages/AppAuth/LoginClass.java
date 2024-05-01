@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginClass {
+    //Use Driver
     private static WebDriver cdriver = WebDriverFactory.getDriver();
 
     public static void login (String username , String password) {

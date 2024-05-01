@@ -29,4 +29,18 @@ public class HomeMenuNav {
 
     }
 
+    public static void MenuCreateCRM ()
+    {
+// Handel System Expiration Date Alert
+        cdriver.switchTo().alert().accept();
+        // Access the second frame in home page
+        WebElement SecondFrame = cdriver.findElements(By.tagName("frame")).get(1);
+        cdriver.switchTo().frame(SecondFrame);
+        WebElement usermenuarrow = cdriver.findElement(By.cssSelector("#pane_ > ul:nth-child(1) > li > span"));
+        usermenuarrow.click();
+        WebElement crmarrow = cdriver.findElement(By.cssSelector("#pane_ > ul:nth-child(1) > li > ul > li:nth-child(3) > span"));
+        usermenuarrow.click();
+
+    }
+
 }

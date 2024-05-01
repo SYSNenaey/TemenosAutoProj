@@ -13,14 +13,18 @@ public class CreateIndCustomer {
 
     public static void CreateIndCustomer()
     {
-     cdriver.findElement(By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a")).click();
+     // Click on Menu Link
+        cdriver.findElement(By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a")).click();
         // Get all window handles
         Set<String> windowHandles = cdriver.getWindowHandles();
         String originalWindowHandle = cdriver.getWindowHandle();
         // Switch to the last opened window
         String lastWindowHandle = (String) windowHandles.toArray()[windowHandles.size() - 1];
         cdriver.switchTo().window(lastWindowHandle);
+
+        // Maximize Window
         cdriver.manage().window().maximize();
+
         // Locate the title dropdown element by its ID
         WebElement titledropdownElement = cdriver.findElement(By.id("fieldName:TITLE"));
         // Create a Select object
