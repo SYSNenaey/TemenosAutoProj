@@ -1,46 +1,110 @@
 package TemenosHelperPages.IndCustomers;
 
+import TemenosHelperPages.CommonMethods;
 import TemenosHelperPages.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
-public class CreateIndCustomer {
-    private static WebDriver cdriver = WebDriverFactory.getDriver();
+public class CreateIndCustomer extends CommonMethods {
 
-    public static void CreateIndCustomer()
-    {
-     // Click on Menu Link
-        cdriver.findElement(By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a")).click();
-        // Get all window handles
-        Set<String> windowHandles = cdriver.getWindowHandles();
-        String originalWindowHandle = cdriver.getWindowHandle();
-        // Switch to the last opened window
-        String lastWindowHandle = (String) windowHandles.toArray()[windowHandles.size() - 1];
-        cdriver.switchTo().window(lastWindowHandle);
+    private final By IndividualCustomerBtn = By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a");
+    private final By titledropdownLocator = By.id("fieldName:TITLE");
+    private final By GivenName = By.id("fieldName:GIVEN.NAMES");
+    private final By GB_Full_Name_field = By.id("fieldName:NAME.1:1");
+    private final By GB_Short_Name_field = By.id("fieldName:SHORT.NAME:1");
+    private final By Mnemoic_field = By.id("fieldName:MNEMONIC");
+    private final By Sector_field = By.id("fieldName:SECTOR");
+    private final By GenderRadioBtn = By.id("radio:tab1:GENDER");
 
-        // Maximize Window
-        cdriver.manage().window().maximize();
+    private final By ValidateDealBtn = By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[2]/a/img");
+    private final By CommitDealBtn = By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[1]/a/img");
 
-        // Locate the title dropdown element by its ID
-        WebElement titledropdownElement = cdriver.findElement(By.id("fieldName:TITLE"));
-        // Create a Select object
+    private final By acceptOverRide = By.id("errorImg");
+
+    private final By completeTxn = By.xpath("//td[contains(text(),'Txn Complete:')]");
+
+    private String CustomerNo;
+
+
+
+
+    public void clickOnIndividualCustomerBtn() {
+        FindElement(IndividualCustomerBtn).click();
+    }
+
+    public void enterGivenName(String GivenNameTxt) {
+        FindElement(GivenName).sendKeys(GivenNameTxt);
+    }
+
+    public void enterGBFullNamefield(String GB_Full_Name_Txt) {
+        FindElement(GB_Full_Name_field).sendKeys(GB_Full_Name_Txt);
+    }
+
+    public void enterMonemoicFieldAutomatically(){
+        FindElement(Mnemoic_field).sendKeys(generateRandomMenmonicvalue());
+    }
+
+    public String generateRandomMenmonicvalue(){
+        int Num_Length = 10;
+        StringBuilder st = new StringBuilder();
+        Random random = new Random();
+        st.append("A");
+        for(int i =0; i<Num_Length; i++){
+            st.append(random.nextInt(10));
+        }
+        return st.toString();
+
+    }
+
+    public void enterSectorField(String enterSectorTxt) {
+        FindElement(Sector_field).sendKeys(enterSectorTxt);
+    }
+
+        public void enterGBShortNameField(String enterGBShortNameTxt) {
+            FindElement(GB_Short_Name_field).clear();
+            FindElement(GB_Short_Name_field).sendKeys(enterGBShortNameTxt);
+        }
+
+    public void clickOnGenderButton() {
+        FindElement(GenderRadioBtn).click();
+    }
+
+    public void clickOnValidateDealBtn() {
+        FindElement(ValidateDealBtn).click();
+    }
+
+    public void clickOnCommitDealBtn() {
+        FindElement(CommitDealBtn).click();
+    }
+
+    public void clickOnTitleDropdownList(String TitleText) {
+        WebElement titledropdownElement = FindElement(titledropdownLocator);
         Select titledropdown = new Select(titledropdownElement);
-        // Select the option by visible text
-        titledropdown.selectByVisibleText("Doctors");
-        cdriver.findElement(By.id("fieldName:GIVEN.NAMES")).sendKeys("andrew6");
-        cdriver.findElement(By.id("fieldName:NAME.1:1")).sendKeys("andrew6");
-        cdriver.findElement(By.id("fieldName:SHORT.NAME:1")).sendKeys("andrew6");
-        cdriver.findElement(By.id("radio:tab1:GENDER")).click();
-        cdriver.findElement(By.id("fieldName:MNEMONIC")).sendKeys("A1258656576");
-        cdriver.findElement(By.id("fieldName:SECTOR")).sendKeys("1001");
-        cdriver.findElement(By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[2]/a/img")).click();
-        cdriver.findElement(By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[1]/a/img")).click();
-        cdriver.close();
-        // Switch to original window
-        cdriver.switchTo().window(originalWindowHandle);
+        titledropdown.selectByVisibleText(TitleText);
+    }
+
+
+
+
+
+    public void checkTheCustomerisExistedBeforeAndOverride(){
+        WebElement acceptOverRideBtn = FindElement(acceptOverRide);
+            if(acceptOverRideBtn.isDisplayed()){
+                acceptOverRideBtn.click();
+            }
+    }
+
+    public void setCustomerNo(){
+        CustomerNo =  FindElement(completeTxn).getText().replaceAll("[^0-9]", "").substring(0, 6);;
+    }
+
+    public String getCustomerNo(){
+        return CustomerNo;
     }
 }

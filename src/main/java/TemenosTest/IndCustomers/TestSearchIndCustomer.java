@@ -1,4 +1,4 @@
 package TemenosTest.IndCustomers;
 
-public class TestAmendIndCustomer {
+public class TestSearchIndCustomer {
 }
