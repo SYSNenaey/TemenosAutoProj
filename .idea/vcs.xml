@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$/TemenosAutoProj" vcs="Git" />
+=======
+>>>>>>> 5c6add8a4581388b31dfe18481e0dd30df4f8321
   </component>
 </project>

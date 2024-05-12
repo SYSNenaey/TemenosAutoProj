@@ -4,11 +4,20 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/TemenosAutoProj/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+=======
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="workspaceImportForciblyTurnedOn" value="true" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+>>>>>>> 5c6add8a4581388b31dfe18481e0dd30df4f8321
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
