@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class HomeMenuNav extends CommonMethods {
-    private static WebDriver cdriver = WebDriverFactory.getDriver();
+    private WebDriver cdriver = WebDriverFactory.getDriver();
 
     private final By FrameElements = By.xpath("//frame");
 
@@ -22,6 +22,9 @@ public class HomeMenuNav extends CommonMethods {
             getAlertTextAndAcceptThisAlert();
         } catch (NoAlertPresentException e) {
             System.out.println("No alert present, continuing script execution...");
+        }finally {
+            switchToTheSecondFrame();
+            OpenCustomerMenu();
         }
 
     }

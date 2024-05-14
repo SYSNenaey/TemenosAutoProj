@@ -49,6 +49,9 @@ public class CreateIndCustomer extends CommonMethods {
     public void enterMonemoicFieldAutomatically(){
         FindElement(Mnemoic_field).sendKeys(generateRandomMenmonicvalue());
     }
+    public void enterMonemoicField(String menmonic){
+        FindElement(Mnemoic_field).sendKeys(menmonic);
+    }
 
     public String generateRandomMenmonicvalue(){
         int Num_Length = 10;
@@ -100,8 +103,9 @@ public class CreateIndCustomer extends CommonMethods {
             }
     }
 
-    public void setCustomerNo(){
-        CustomerNo =  FindElement(completeTxn).getText().replaceAll("[^0-9]", "").substring(0, 6);;
+    public String setCustomerNo(){
+        CustomerNo =  FindElement(completeTxn).getText().replaceAll("[^0-9]", "").substring(0, 6);
+        return CustomerNo;
     }
 
     public String getCustomerNo(){

@@ -1,7 +1,7 @@
-TemonosLink=http://localhost:8080/R23MBR/servlet/BrowserServlet
+TemonosLink=http://localhost:9091/R22MBR/servlet/BrowserServlet
 UserName=INPUTT
 Password=123456
-AuthorizeUserName=SAHER1
-AuthorizePassword=123456
+AuthorizeUserName=AUTHOR
+AuthorizePassword=1234567
 
 

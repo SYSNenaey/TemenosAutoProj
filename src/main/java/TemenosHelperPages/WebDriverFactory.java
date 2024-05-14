@@ -43,6 +43,9 @@ public class WebDriverFactory {
     }
 
     public static void quit(){
-        cdriver.quit();
+        if (cdriver != null) {
+            cdriver.quit();
+            cdriver = null;
+        }
     }
 }

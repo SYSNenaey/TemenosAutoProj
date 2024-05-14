@@ -1,22 +1,15 @@
 package TemenosTest.IndCustomers;
 
-import Browser.Browser;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
+import static TemenosTest.IndCustomers.BaseTest.browser;
 import static TemenosTest.IndCustomers.Utilities.AmendIndCustomerUtilities.amendIndCustomer;
 import static TemenosTest.IndCustomers.Utilities.AuthorizeIndCustomerUtilities.authorizeIndCustomer;
 import static TemenosTest.IndCustomers.Utilities.CreateIndCustomerUtilities.createIndCustomerr;
 import static TemenosTest.IndCustomers.Utilities.LoginUtilties.login;
 import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
 
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
-public class TestCreateIndCustomer extends BaseTest {
+public class TestAmendIndCustomer {
 
     @Test(dataProvider = "RegisterData")
     public void createIndCustomer(String[] params){
@@ -29,5 +22,7 @@ public class TestCreateIndCustomer extends BaseTest {
         navToHomeMenu(browser);
         createIndCustomerr(browser,Title,GivenName,FullName,ShortName,Sector);
         authorizeIndCustomer(browser,  "AuthorizeUserName", "AuthorizePassword");
+        amendIndCustomer(browser,"1410014");
+        authorizeIndCustomer(browser,"UserName","Password");
     }
 }
