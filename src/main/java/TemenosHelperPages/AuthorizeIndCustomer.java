@@ -22,9 +22,9 @@ public class AuthorizeIndCustomer extends CommonMethods {
     private final By completeTxn = By.xpath("//td[contains(text(),'Txn Complete:')]");
 
 
-    public void clickOnAuthorizeDeleteCustomerBtnn() {
-        FindElement(AuthorizeDeleteCustomerBtn).click();
-    }
+//    public void clickOnAuthorizeDeleteCustomerBtnn() {
+//        FindElement(AuthorizeDeleteCustomerBtn).click();
+//    }
 
 
 

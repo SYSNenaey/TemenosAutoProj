@@ -7,7 +7,7 @@ import static TemenosTest.IndCustomers.Utilities.LoginUtilties.login;
 public class TestLogin extends BaseTest{
 
     @Test
-    public void loginTest(){
+    public void loginTest() throws InterruptedException {
         login(browser,"UserName","Password");
     }
 }

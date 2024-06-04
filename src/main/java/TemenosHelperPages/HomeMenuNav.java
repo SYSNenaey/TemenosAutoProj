@@ -1,5 +1,6 @@
 package TemenosHelperPages;
 
+import TemenosHelperPages.IndCustomers.CreateIndCustomer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +16,11 @@ public class HomeMenuNav extends CommonMethods {
     private final By UserMenuArrow = By.cssSelector("#pane_ > ul:nth-child(1) > li > span");
 
     private final By CustomerMenuArrow = By.cssSelector("#pane_ > ul:nth-child(1) > li > ul > li:nth-child(2) > span");
+    private final By IndividualCustomerBtn = By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a");
+    private final By AuthorizeDeleteCustomerBtn = By.xpath("//a[@href=\"javascript:docommand('COS CUSTOMER.NAU');\"]");
+    private final By AmendCustomerBtn = By.xpath("//a[@href=\"javascript:docommand('COS CUST.AMEND');\"]");
 
-
-    public void HandleAlert() {
+    public void HandleAlert() throws InterruptedException {
         try {
             getAlertTextAndAcceptThisAlert();
         } catch (NoAlertPresentException e) {
@@ -30,10 +33,19 @@ public class HomeMenuNav extends CommonMethods {
     }
 
 
-    public void OpenCustomerMenu() {
+    public void OpenCustomerMenu() throws InterruptedException {
+        switchToTheSecondFrame();
         clickOnUserMenuArrow();
         clickOnCustomerMenuArrow();
     }
+    public CreateIndCustomer clickOnIndividualCustomerBtn() {
+        FindElement(IndividualCustomerBtn).click();
+        return new CreateIndCustomer();
+    }
+    public AuthorizeIndCustomer clickOnAuthorizeDeleteCustomerBtnn() {
+    FindElement(AuthorizeDeleteCustomerBtn).click();
+    return new AuthorizeIndCustomer();
+   }
 
 
     public void clickOnUserMenuArrow() {
@@ -54,7 +66,10 @@ public class HomeMenuNav extends CommonMethods {
         WebElement frameElementOne = cdriver.findElements(By.tagName("frame")).getFirst();
         SwitchFrameByWebElement(frameElementOne);
     }
-
+    public AmendindCustomer clickOnAmendCustomerBtnCustomerBtnn() {
+        FindElement(AmendCustomerBtn).click();
+        return new AmendindCustomer();
+    }
 
     public static void MenuAuthorizeCustomer() {
 

@@ -3,5 +3,10 @@ UserName=INPUTT
 Password=123456
 AuthorizeUserName=AUTHOR
 AuthorizePassword=1234567
+Title=Doctors
+Gender=male
+Sector=1001
+
+
 
 

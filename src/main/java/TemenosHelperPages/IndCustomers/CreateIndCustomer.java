@@ -1,26 +1,26 @@
 package TemenosHelperPages.IndCustomers;
 
 import TemenosHelperPages.CommonMethods;
-import TemenosHelperPages.WebDriverFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 public class CreateIndCustomer extends CommonMethods {
 
-    private final By IndividualCustomerBtn = By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a");
+    //private final By IndividualCustomerBtn = By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a");
     private final By titledropdownLocator = By.id("fieldName:TITLE");
     private final By GivenName = By.id("fieldName:GIVEN.NAMES");
     private final By GB_Full_Name_field = By.id("fieldName:NAME.1:1");
     private final By GB_Short_Name_field = By.id("fieldName:SHORT.NAME:1");
     private final By Mnemoic_field = By.id("fieldName:MNEMONIC");
     private final By Sector_field = By.id("fieldName:SECTOR");
-    private final By GenderRadioBtn = By.id("radio:tab1:GENDER");
+    private final By femaleRadioBtn = By.xpath("//input[@value='FEMALE']");
+    private final By maleRadioBtn = By.xpath("//input[@value='MALE']");
+
+
+
 
     private final By ValidateDealBtn = By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[2]/a/img");
     private final By CommitDealBtn = By.xpath("//*[@id=\"goButton\"]/tbody/tr/td/table/tbody/tr/td/div/table/tbody/tr/td[1]/a/img");
@@ -34,9 +34,10 @@ public class CreateIndCustomer extends CommonMethods {
 
 
 
-    public void clickOnIndividualCustomerBtn() {
-        FindElement(IndividualCustomerBtn).click();
-    }
+//    public CreateIndCustomer clickOnIndividualCustomerBtn() {
+//        FindElement(IndividualCustomerBtn).click();
+//        return new CreateIndCustomer();
+//    }
 
     public void enterGivenName(String GivenNameTxt) {
         FindElement(GivenName).sendKeys(GivenNameTxt);
@@ -74,8 +75,15 @@ public class CreateIndCustomer extends CommonMethods {
             FindElement(GB_Short_Name_field).sendKeys(enterGBShortNameTxt);
         }
 
-    public void clickOnGenderButton() {
-        FindElement(GenderRadioBtn).click();
+    public void clickOnGenderButton(String gender) {
+        gender = gender.toLowerCase();
+        System.out.println(gender);
+        if (gender.equals("male")){
+            FindElement(maleRadioBtn).click();
+
+        } else if (gender.equals("female")) {
+            FindElement(femaleRadioBtn).click();
+        }
     }
 
     public void clickOnValidateDealBtn() {

@@ -8,10 +8,10 @@ import static TemenosTest.IndCustomers.Utilities.LoginUtilties.login;
 import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
 
 public class AmendIndCustomerUtilities extends BaseTest {
-    public static void amendIndCustomer(Browser browser,String customerNo){
+    public static void amendIndCustomer(Browser browser, String customerNo) throws InterruptedException {
         login(browser,"AuthorizeUserName","AuthorizePassword");
-        navToHomeMenu(browser);
-        browser.temonos.amendindCustomer.clickOnAmendCustomerBtnCustomerBtnn();
+        browser.temonos.homeMenuNav.OpenCustomerMenu();
+        browser.temonos.amendindCustomer = browser.temonos.homeMenuNav.clickOnAmendCustomerBtnCustomerBtnn();
         browser.temonos.amendindCustomer.switchToTheOpenedNewWindow();
         browser.temonos.amendindCustomer.MaximizeWindow();
         browser.temonos.amendindCustomer.switchToTheFirstFrame();

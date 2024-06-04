@@ -7,10 +7,11 @@ import org.testng.Assert;
 import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
 
 public class AuthorizeIndCustomerUtilities extends BaseTest {
-    public static void authorizeIndCustomer(Browser browser, String authUsername, String authPassword){
+    public static void authorizeIndCustomer(Browser browser, String authUsername, String authPassword) throws InterruptedException {
         browser.temonos.login.login(data.getPropertyValue(authUsername), data.getPropertyValue(authPassword));
-        browser.temonos.homeMenuNav.HandleAlert();
-        browser.temonos.authorizeIndCustomer.clickOnAuthorizeDeleteCustomerBtnn();
+        browser.temonos.homeMenuNav = browser.temonos.login.clickOnSignIn();
+        browser.temonos.homeMenuNav.OpenCustomerMenu();
+        browser.temonos.authorizeIndCustomer = browser.temonos.homeMenuNav.clickOnAuthorizeDeleteCustomerBtnn();
         browser.temonos.authorizeIndCustomer.switchToTheOpenedNewWindow();
         browser.temonos.authorizeIndCustomer.MaximizeWindow();
         browser.temonos.authorizeIndCustomer.clickOnSearchBtnclickOnSearchBtn();

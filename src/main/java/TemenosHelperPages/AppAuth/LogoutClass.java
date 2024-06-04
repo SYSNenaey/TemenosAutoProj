@@ -12,9 +12,9 @@ public class LogoutClass extends CommonMethods {
 
     private final By FirstFrame = By.xpath("(//frame)[1]");
     private final By SignOffBtn = By.xpath("//*[@id=\"pane_\"]/div[1]/div/table/tbody/tr/td[3]/a");
+
     public void Logout()
     {
-
         //fetch logout element then click
         WebElement frameElement = FindElement(FirstFrame);
         SwitchFrameByWebElement(frameElement);

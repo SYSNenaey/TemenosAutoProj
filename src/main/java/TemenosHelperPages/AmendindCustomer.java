@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class AmendindCustomer extends CommonMethods {
-    private final By AmendCustomerBtn = By.xpath("//a[@href=\"javascript:docommand('COS CUST.AMEND');\"]");
+
 
     private final By CustomerNoField = By.xpath("//input[@id='value:1:1:1']");
 
@@ -18,9 +18,7 @@ public class AmendindCustomer extends CommonMethods {
     private final By FrameElements = By.xpath("//frame");
 
 
-    public void clickOnAmendCustomerBtnCustomerBtnn() {
-        FindElement(AmendCustomerBtn).click();
-    }
+
 
     public void switchToTheFirstFrame() {
         WebElement frameElementOne = cdriver.findElements(By.tagName("frame")).getFirst();
@@ -50,6 +48,8 @@ public class AmendindCustomer extends CommonMethods {
         FindElement(AmendRankDroplist).click();
         FindElement(selectRank).click();
     }
+
+
 
 //    public String getAuthorizeMsg() {
 //        String AuthorizeMsg = FindElement(completeTxn).getText();
