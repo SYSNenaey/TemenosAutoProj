@@ -5,10 +5,9 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static TemenosTest.IndCustomers.Utilities.AmendIndCustomerUtilities.amendIndCustomer;
 import static TemenosTest.IndCustomers.Utilities.AuthorizeIndCustomerUtilities.authorizeIndCustomer;
 import static TemenosTest.IndCustomers.Utilities.LoginUtilties.login;
-import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
+import static TemenosTest.IndCustomers.Utilities.MenuCreateIndCustomerUtilities.navToHomeMenu;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

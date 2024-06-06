@@ -4,8 +4,6 @@ import Browser.Browser;
 import TemenosTest.IndCustomers.BaseTest;
 import org.testng.Assert;
 
-import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
-
 public class AuthorizeIndCustomerUtilities extends BaseTest {
     public static void authorizeIndCustomer(Browser browser, String authUsername, String authPassword) throws InterruptedException {
         browser.temonos.login.login(data.getPropertyValue(authUsername), data.getPropertyValue(authPassword));

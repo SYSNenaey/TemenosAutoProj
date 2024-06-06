@@ -1,5 +1,9 @@
 package TemenosHelperPages;
 
+import TemenosHelperPages.Accounts.AmendAccount;
+import TemenosHelperPages.Accounts.AuthorizeAndDeleteAccount;
+import TemenosHelperPages.Accounts.Accounts;
+
 import TemenosHelperPages.IndCustomers.CreateIndCustomer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
@@ -16,16 +20,22 @@ public class HomeMenuNav extends CommonMethods {
     private final By UserMenuArrow = By.cssSelector("#pane_ > ul:nth-child(1) > li > span");
 
     private final By CustomerMenuArrow = By.cssSelector("#pane_ > ul:nth-child(1) > li > ul > li:nth-child(2) > span");
+    private final By accountMenuArrow = By.xpath("//img[@alt='Account']");
     private final By IndividualCustomerBtn = By.xpath("//*[@id=\"pane_\"]/ul[1]/li/ul/li[2]/ul/li[1]/a");
     private final By AuthorizeDeleteCustomerBtn = By.xpath("//a[@href=\"javascript:docommand('COS CUSTOMER.NAU');\"]");
     private final By AmendCustomerBtn = By.xpath("//a[@href=\"javascript:docommand('COS CUST.AMEND');\"]");
+    private final By openCurrentAccount = By.xpath("//a[normalize-space()='Open Current Account']");
+    private final By openSavingAccount = By.xpath("//a[normalize-space()='Open Savings Account']");
+    private final By amendAccount = By.xpath("//a[normalize-space()='Amend Account']");
+    private final By authorizeAndDeleteAccount = By.xpath("//a[@onclick=\"javascript:menu_history('CONTRACT','COS ACCOUNT.NAU');processMenuHeaderText('Authorise/Delete Account')\"]");
+
 
     public void HandleAlert() throws InterruptedException {
         try {
             getAlertTextAndAcceptThisAlert();
         } catch (NoAlertPresentException e) {
             System.out.println("No alert present, continuing script execution...");
-        }finally {
+        } finally {
             switchToTheSecondFrame();
             OpenCustomerMenu();
         }
@@ -34,18 +44,19 @@ public class HomeMenuNav extends CommonMethods {
 
 
     public void OpenCustomerMenu() throws InterruptedException {
-        switchToTheSecondFrame();
         clickOnUserMenuArrow();
         clickOnCustomerMenuArrow();
     }
+
     public CreateIndCustomer clickOnIndividualCustomerBtn() {
         FindElement(IndividualCustomerBtn).click();
         return new CreateIndCustomer();
     }
+
     public AuthorizeIndCustomer clickOnAuthorizeDeleteCustomerBtnn() {
-    FindElement(AuthorizeDeleteCustomerBtn).click();
-    return new AuthorizeIndCustomer();
-   }
+        FindElement(AuthorizeDeleteCustomerBtn).click();
+        return new AuthorizeIndCustomer();
+    }
 
 
     public void clickOnUserMenuArrow() {
@@ -55,6 +66,31 @@ public class HomeMenuNav extends CommonMethods {
     public void clickOnCustomerMenuArrow() {
         FindElement(CustomerMenuArrow).click();
     }
+
+    public void clickOnAccountMenuArrow() {
+        FindElement(accountMenuArrow).click();
+    }
+
+    public Accounts clickOnOpenCurrentAccount() {
+        FindElement(openCurrentAccount).click();
+        return new Accounts();
+    }
+
+    public Accounts clickOnOpenSavingAccount() {
+        FindElement(openSavingAccount).click();
+        return new Accounts();
+    }
+
+    public AmendAccount clickOnAmendAccount() {
+        FindElement(amendAccount).click();
+        return new AmendAccount();
+    }
+
+    public AuthorizeAndDeleteAccount clickOnAuthorizeAndDeleteAccount() {
+        FindElement(authorizeAndDeleteAccount).click();
+        return new AuthorizeAndDeleteAccount();
+    }
+
 
     public void switchToTheSecondFrame() {
         List<WebElement> frameElement2 = cdriver.findElements(FrameElements);
@@ -66,6 +102,7 @@ public class HomeMenuNav extends CommonMethods {
         WebElement frameElementOne = cdriver.findElements(By.tagName("frame")).getFirst();
         SwitchFrameByWebElement(frameElementOne);
     }
+
     public AmendindCustomer clickOnAmendCustomerBtnCustomerBtnn() {
         FindElement(AmendCustomerBtn).click();
         return new AmendindCustomer();

@@ -5,7 +5,6 @@ import TemenosTest.IndCustomers.BaseTest;
 import org.testng.Assert;
 
 import static TemenosTest.IndCustomers.Utilities.LoginUtilties.login;
-import static TemenosTest.IndCustomers.Utilities.MenuCreateIndexCustomerUtilities.navToHomeMenu;
 
 public class AmendIndCustomerUtilities extends BaseTest {
     public static void amendIndCustomer(Browser browser, String customerNo) throws InterruptedException {
